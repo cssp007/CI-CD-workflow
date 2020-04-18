@@ -3,21 +3,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
    labels:
-      run: nginx
-   name: nginx
+      run: nginx-basic
+   name: nginx-basic
 spec:
    replicas: 2
    selector:
      matchLabels:
-       run: nginx
+       run: nginx-basic
    template:
      metadata:
         labels:
-          run: nginx
+          run: nginx-basic
      spec:
         containers:
-          - image: cssp007143/nginx-image:${build_number}
-            name:  nginx
+          - image: cssp007143/nginx-basic:${build_number}
+            name:  nginx-basic
             ports:
               - containerPort: 80
             
@@ -26,12 +26,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: for-nginx-basic
 spec:
   type: NodePort
   ports:
-    - nodePort: 30303
+    - nodePort: 30000
       port: 80
       targetPort: 80
   selector:
-    run: nginx
+    run: nginx-basic

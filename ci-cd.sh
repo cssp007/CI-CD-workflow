@@ -99,7 +99,7 @@ set_init_vars () {
   fi
   echo "Kubernetes Context: $k8sContext"
 
-  awsAccountId=223384460030
+  awsAccountId=1234567890
   echo "AWS Account Id: $awsAccountId"
 }
 
